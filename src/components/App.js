@@ -1,13 +1,24 @@
-import "../styles/App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-function App() {
+//Components
+import Home from "../components/Home";
+import Redirect from "../components/Redirect";
+import Dashboard from "../components/Dashboard";
+import NotFound from "../components/NotFound";
+
+const App = () => {
   return (
-    <div id="App">
-      <h1>
-        <i class="fab fa-spotify"></i>Spotify Top Artists
-      </h1>
-    </div>
+    <BrowserRouter>
+      <div className="main">
+        <Switch>
+          <Route path="/" component={Home} exact={true} />
+          <Route path="/redirect" component={Redirect} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
